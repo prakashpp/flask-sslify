@@ -26,8 +26,8 @@ class SSLify(object):
         app.config.setdefault('SSLIFY_SKIPS', None)
 
         self.hsts_include_subdomains = self.hsts_include_subdomains or app.config['SSLIFY_SUBDOMAINS']
-        self.permanent = self.permanent or self.app.config['SSLIFY_PERMANENT']
-        self.skip_list = self.skip_list or self.app.config['SSLIFY_SKIPS']
+        self.permanent = self.permanent or app.config['SSLIFY_PERMANENT']
+        self.skip_list = self.skip_list or app.config['SSLIFY_SKIPS']
 
         app.before_request(self.redirect_to_ssl)
         app.after_request(self.set_hsts_header)
